@@ -6,6 +6,7 @@
 #include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sysexits.h>
 
 struct lbuf {
 	int	 lb_pos;
@@ -34,10 +35,16 @@ struct lbuf {
 #define LBUF_GET(lb)							\
 	(lb).lb_buf
 
+#define LBUF_SET(lb, s)							\
+	(lb).lb_buf = (s)
+
 #define LBUF_FREE(lb)							\
 	free((lb).lb_buf)
 
 #define LBUF_RESET(lb)							\
 	(lb).lb_pos = -1						\
+
+#define LBUF_CHOP(lb)							\
+	(lb).lb_pos--
 
 #endif /* LBUF_H */
